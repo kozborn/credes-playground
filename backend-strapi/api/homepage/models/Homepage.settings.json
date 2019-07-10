@@ -1,0 +1,25 @@
+{
+  "connection": "default",
+  "collectionName": "page",
+  "info": {
+    "name": "homepage",
+    "description": "Whole home page content type"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": [
+      "created_at",
+      "updated_at"
+    ],
+    "comment": ""
+  },
+  "attributes": {
+    "additional-text": {
+      "type": "string"
+    },
+    "articles": {
+      "collection": "article",
+      "via": "parentpage"
+    }
+  }
+}

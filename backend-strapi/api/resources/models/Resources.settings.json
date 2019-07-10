@@ -1,0 +1,34 @@
+{
+  "connection": "default",
+  "collectionName": "resources",
+  "info": {
+    "name": "resources",
+    "description": "Resources - links to hosted files, texts etc."
+  },
+  "options": {
+    "increments": true,
+    "timestamps": [
+      "created_at",
+      "updated_at"
+    ],
+    "comment": ""
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "type": {
+      "enum": [
+        "publication",
+        "text",
+        "file",
+        "image",
+        "link"
+      ],
+      "type": "enumeration"
+    },
+    "link-to-resource": {
+      "type": "string"
+    }
+  }
+}

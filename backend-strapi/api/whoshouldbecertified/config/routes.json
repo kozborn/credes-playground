@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/whoshouldbecertifieds",
+      "handler": "Whoshouldbecertified.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/whoshouldbecertifieds/count",
+      "handler": "Whoshouldbecertified.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/whoshouldbecertifieds/:id",
+      "handler": "Whoshouldbecertified.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/whoshouldbecertifieds",
+      "handler": "Whoshouldbecertified.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/whoshouldbecertifieds/:id",
+      "handler": "Whoshouldbecertified.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/whoshouldbecertifieds/:id",
+      "handler": "Whoshouldbecertified.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

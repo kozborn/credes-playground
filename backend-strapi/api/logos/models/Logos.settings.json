@@ -1,0 +1,29 @@
+{
+  "connection": "default",
+  "collectionName": "logos",
+  "info": {
+    "name": "logos",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": [
+      "created_at",
+      "updated_at"
+    ],
+    "comment": ""
+  },
+  "attributes": {
+    "logo-name": {
+      "type": "string"
+    },
+    "logo-img": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "order-number": {
+      "type": "integer"
+    }
+  }
+}

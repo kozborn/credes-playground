@@ -1,0 +1,40 @@
+{
+  "connection": "default",
+  "collectionName": "events",
+  "info": {
+    "name": "event",
+    "description": "Events description"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": [
+      "created_at",
+      "updated_at"
+    ],
+    "comment": ""
+  },
+  "attributes": {
+    "event-name": {
+      "type": "string"
+    },
+    "event-date": {
+      "type": "date"
+    },
+    "event-description": {
+      "type": "text"
+    },
+    "event-image": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "asdf": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "members-count": {
+      "type": "integer"
+    }
+  }
+}

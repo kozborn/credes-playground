@@ -1,0 +1,20 @@
+{
+  "defaultConnection": "default",
+  "connections": {
+    "default": {
+      "connector": "strapi-hook-bookshelf",
+      "settings": {
+        "client": "mysql",
+        "host": "mysql",
+        "database": "strapi-backend-dev",
+        "password": "sedes;",
+        "enabled": true,
+        "defaultConnection": "default",
+        "username": "root"
+      },
+      "options": {
+        "useNullAsDefault": true
+      }
+    }
+  }
+}

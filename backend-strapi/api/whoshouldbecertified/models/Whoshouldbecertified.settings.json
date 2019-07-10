@@ -1,0 +1,25 @@
+{
+  "connection": "default",
+  "collectionName": "whoshouldbecertifieds",
+  "info": {
+    "name": "whoshouldbecertified",
+    "description": "Who should be certified description"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": [
+      "created_at",
+      "updated_at"
+    ],
+    "comment": ""
+  },
+  "attributes": {
+    "description": {
+      "type": "text"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

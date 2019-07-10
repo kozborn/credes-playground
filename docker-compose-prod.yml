@@ -1,0 +1,54 @@
+version: "3"
+
+services:
+  mysql-prod:
+    image: mysql:5.7.26
+    ports:
+      - "8002:3306"
+    environment:
+      - "MYSQL_USER=root"
+      - "MYSQL_ROOT_PASSWORD=sedes;"
+      - "MYSQL_DATABASE=strapi-backend-prod"
+    networks:
+      - app_network_prod
+    restart: always
+    volumes:
+      # see https://github.com/strapi/strapi/issues/1957 and ./mysql-init/delete...shema.sql for explanation
+      - ./mysql-init:/docker-entrypoint-initdb.d
+  backend-prod:
+    build:
+      context: ./backend-strapi
+      dockerfile: Dockerfile
+      args:
+        - "ENV_WORKDIR=/usr/src/backend-strapi-prod"
+    depends_on:
+      - "mysql-prod"
+    command:
+      ["./wait-for-it.sh", "mysql-prod:8002", "--", "npm", "run", "start:prod"]
+    environment:
+      - "test=testvalue"
+      - "DATABASE_PORT=3306"
+      - "DATABASE_USERNAME=root"
+      - "DATABASE_PASSWORD=sedes;"
+      - "DATABASE_HOST=mysql-prod"
+      - "DATABASE_NAME=strapi-backend-prod"
+    volumes:
+      - ./backend-strapi:/usr/src/backend-strapi-prod
+      - /usr/src/backend-strapi-prod/node_modules
+    working_dir: /usr/src/backend-strapi-prod
+    ports:
+      - "1338:1337"
+    networks:
+      - app_network_prod
+    restart: always
+
+  # frontend:
+  #   build: ./frontend-next
+  #   volumes:
+  #     - ./frontend-next:/frontend-next
+  #   command: ["echo", "TBD"]
+  #   networks:
+  #     - app_network_prod
+
+networks:
+  app_network_prod:

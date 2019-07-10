@@ -1,0 +1,38 @@
+{
+  "connection": "default",
+  "collectionName": "articles",
+  "info": {
+    "name": "article",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": [
+      "created_at",
+      "updated_at"
+    ],
+    "comment": ""
+  },
+  "attributes": {
+    "article-title": {
+      "required": true,
+      "type": "string"
+    },
+    "article-content": {
+      "type": "text"
+    },
+    "article-abstract": {
+      "type": "text"
+    },
+    "parentpage": {
+      "model": "homepage",
+      "via": "articles"
+    },
+    "order-number": {
+      "type": "integer"
+    },
+    "article-tag": {
+      "type": "text"
+    }
+  }
+}
