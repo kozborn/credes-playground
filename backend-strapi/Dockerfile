@@ -10,7 +10,7 @@ WORKDIR $ENV_WORKDIR
 COPY . .
 
 RUN echo "unsafe-perm = true" >> ~/.npmrc
-RUN npm install -g strapi@3.0.0-beta.9
+
 RUN npm install
 
 EXPOSE $PORT

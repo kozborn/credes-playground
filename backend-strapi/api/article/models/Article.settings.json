@@ -31,8 +31,8 @@
     "order-number": {
       "type": "integer"
     },
-    "article-tag": {
-      "type": "text"
+    "page-position-identifier": {
+      "type": "string"
     }
   }
 }

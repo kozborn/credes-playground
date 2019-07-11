@@ -10,10 +10,12 @@
         "password": "sedes;",
         "enabled": true,
         "defaultConnection": "default",
-        "username": "root"
+        "username": "root",
+        "charset": "utf8_unicode_ci"
       },
       "options": {
-        "useNullAsDefault": true
+        "useNullAsDefault": true,
+        "charset": "utf8_unicode_ci"
       }
     }
   }

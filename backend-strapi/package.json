@@ -28,7 +28,6 @@
     "mysql": "^2.17.1",
     "pg": "^7.11.0",
     "sails-mysql": "^1.0.1",
-    "sqlite3": "latest",
     "strapi": "3.0.0-beta.9",
     "strapi-admin": "3.0.0-beta.9",
     "strapi-hook-bookshelf": "3.0.0-beta.9",

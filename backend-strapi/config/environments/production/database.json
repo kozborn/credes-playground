@@ -10,9 +10,12 @@
         "database": "${process.env.DATABASE_NAME}",
         "username": "${process.env.DATABASE_USERNAME}",
         "password": "${process.env.DATABASE_PASSWORD}",
-        "enabled": true
+        "enabled": true,
+        "charset": "utf8_unicode_ci"
       },
-      "options": {}
+      "options": {
+        "charset": "utf8_unicode_ci"
+      }
     }
   }
 }
