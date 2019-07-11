@@ -1,2 +1,7 @@
 @tailwind base;
 @tailwind utilities;
+
+.logos img {
+  max-width: 200px;
+  max-height: 75px;
+}

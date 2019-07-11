@@ -1,8 +1,8 @@
 {
   "connection": "default",
-  "collectionName": "articles",
+  "collectionName": "sections",
   "info": {
-    "name": "article",
+    "name": "section",
     "description": ""
   },
   "options": {
@@ -14,20 +14,19 @@
     "comment": ""
   },
   "attributes": {
-    "article-title": {
-      "required": true,
+    "title": {
       "type": "string"
     },
-    "article-content": {
+    "content": {
       "type": "text"
     },
-    "article-abstract": {
-      "type": "text"
+    "page": {
+      "model": "page",
+      "via": "sections"
     },
-    "order-number": {
-      "type": "integer"
-    },
-    "page-position-identifier": {
+    "identifier": {
+      "unique": true,
+      "required": true,
       "type": "string"
     }
   }

@@ -1,32 +1,54 @@
 import "../styles/index.css";
-import Layout from "../layouts/Layout";
 import axios from "axios";
-import { getUrl } from "../utils/utils";
+import Layout from "../layouts/Layout";
+import Logos from "../components/Logos";
+import Section from "../components/Section";
+import _ from "underscore";
+import { getUrl } from "../lib/utils";
 
-const HomePage = ({ articlesAbout }) => (
-  <Layout>
-    <div className="container px-12 py-5 shadow rounded">
-      <h1 className="text-primary leading-normal">Next.js</h1>
-      <p className="text-danger">with Tailwind CSS</p>
-      <p className="text-gray-400">with Tailwind CSS</p>
-    </div>
-    <div>
-      {articlesAbout.map(article => (
-        <div key={article.id}>
-          <h2>{article["article-title"]}</h2>
-          <div>{article["article-content"]}</div>
-        </div>
-      ))}
-    </div>
-    ,
-  </Layout>
-);
+const HomePage = ({ articlesAbout, logos, pageContent }) => {
+  const headSection = _(pageContent.sections).find(section => {
+    return section.identifier == "head-title";
+  });
+  const programSection = _(pageContent.sections).find(
+    section => section.identifier == "program"
+  );
+
+  return (
+    <Layout>
+      <Logos logos={logos} />
+      <Section title={headSection.title} content={headSection.content} />
+      <Section title={programSection.title} content={programSection.content} />
+      <div>
+        {articlesAbout.map(article => (
+          <div key={article.id}>
+            <Section
+              title={article["article-title"]}
+              content={article["article-content"]}
+            />
+          </div>
+        ))}
+      </div>
+    </Layout>
+  );
+};
 
 HomePage.getInitialProps = async ({ req }) => {
-  const response = await axios.get(
+  const articles = await axios.get(
     `${getUrl(req)}/articles?page-position-identifier=about`
   );
-  return { articlesAbout: response.data };
+
+  const logos = await axios.get(`${getUrl(req)}/logos`);
+
+  const pageContent = await axios.get(
+    `${getUrl(req)}/pages?page-name=homepage`
+  );
+
+  return {
+    articlesAbout: articles.data,
+    logos: logos.data,
+    pageContent: pageContent.data[0] // expected to be only one
+  };
 };
 
 export default HomePage;

@@ -9,6 +9,6 @@ WORKDIR $ENV_WORKDIR
 
 COPY . .
 
-RUN npm install
+RUN rm -rf ./node_modules/ && npm install
 
 EXPOSE $PORT

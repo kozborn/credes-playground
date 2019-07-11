@@ -58,8 +58,6 @@ services:
     networks:
       - app_network
     restart: always
-    links:
-      - backend
 
 networks:
   app_network:

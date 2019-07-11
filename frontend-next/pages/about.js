@@ -1,7 +1,8 @@
-import "../styles/index.css";
-import Layout from "../layouts/Layout";
 import axios from "axios";
-import { getUrl } from "../utils/utils";
+import Layout from "../layouts/Layout";
+import Markdown from "../components/Markdown";
+import { getUrl } from "../lib/utils";
+import "../styles/index.css";
 
 function About({ articles }) {
   return (
@@ -11,7 +12,7 @@ function About({ articles }) {
         {articles.map(article => (
           <div key={article.id}>
             <h2>{article["article-title"]}</h2>
-            <div>{article["article-content"]}</div>
+            <Markdown content={article["article-content"]} />
           </div>
         ))}
       </div>

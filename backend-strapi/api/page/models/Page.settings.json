@@ -1,0 +1,27 @@
+{
+  "connection": "default",
+  "collectionName": "pages",
+  "info": {
+    "name": "page",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": [
+      "created_at",
+      "updated_at"
+    ],
+    "comment": ""
+  },
+  "attributes": {
+    "page-name": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "sections": {
+      "collection": "section",
+      "via": "page"
+    }
+  }
+}

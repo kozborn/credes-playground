@@ -1,15 +1,26 @@
-import React, { Component } from "react";
+import React from "react";
+import PropTypes from "prop-types";
+import { getUrl } from "../lib/utils";
 
-export default class Logos extends Component {
-  componentDidMount() {
-    // fetch(`http://localhost:1337/logos`)
-    //   .then(res => res.json())
-    //   .then(json => {
-    //     console.log(json);
-    //   });
-  }
+const Logos = ({ logos }) => (
+  <div className="logos mx-auto lg:flex md:flex justify-center">
+    {logos.map(logo => (
+      <div className="flex-row items-center my-5" key={logo.id}>
+        <img
+          className={`${logo["logo-name"]} mx-auto md:mx-16 lg:mx-16`}
+          src={`${getUrl()}/${logo["logo-img"].url}`}
+        />
+      </div>
+    ))}
+  </div>
+);
 
-  render() {
-    return <h1>Here will be logos</h1>;
-  }
-}
+Logos.propTypes = {
+  logos: PropTypes.array
+};
+
+Logos.defaultProps = {
+  logos: []
+};
+
+export default Logos;
