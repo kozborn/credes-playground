@@ -8,7 +8,7 @@ const Logos = ({ logos }) => (
       <div className="flex-row items-center my-5" key={logo.id}>
         <img
           className={`${logo["logo-name"]} mx-auto md:mx-16 lg:mx-16`}
-          src={`${getUrl()}/${logo["logo-img"].url}`}
+          src={`${getUrl()}${logo["logo-img"].url}`}
         />
       </div>
     ))}

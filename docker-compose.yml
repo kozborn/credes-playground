@@ -27,7 +27,6 @@ services:
       - "mysql"
     command: ["./wait-for-it.sh", "mysql:8001", "--", "npm", "run", "dev"]
     environment:
-      - "test=testvalue"
       - "DATABASE_PORT=8001"
       - "DATABASE_PASSWORD=sedes;"
       - "DATABASE_HOST=mysql"

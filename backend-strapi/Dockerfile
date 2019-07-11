@@ -11,12 +11,11 @@ COPY . .
 
 RUN echo "unsafe-perm = true" >> ~/.npmrc
 
+RUN rm -rf ./node_modules
 RUN npm install
 
 EXPOSE $PORT
 
-COPY ./wait-for-it.sh /usr/src/backend-strapi/wait-for-it.sh
+COPY ./wait-for-it.sh $ENV_WORKDIR/wait-for-it.sh
 
-RUN chmod +x /usr/src/backend-strapi/wait-for-it.sh
-
-# CMD ["strapi", "develop"]
+RUN chmod +x $ENV_WORKDIR/wait-for-it.sh

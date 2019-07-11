@@ -7,12 +7,14 @@ import _ from "underscore";
 import { getUrl } from "../lib/utils";
 
 const HomePage = ({ articlesAbout, logos, pageContent }) => {
-  const headSection = _(pageContent.sections).find(section => {
-    return section.identifier == "head-title";
-  });
-  const programSection = _(pageContent.sections).find(
-    section => section.identifier == "program"
-  );
+  const headSection = !_.isEmpty(pageContent)
+    ? _(pageContent.sections).find(section => {
+        return section.identifier == "head-title";
+      })
+    : {};
+  const programSection = !_.isEmpty(pageContent)
+    ? _(pageContent.sections).find(section => section.identifier == "program")
+    : {};
 
   return (
     <Layout>
