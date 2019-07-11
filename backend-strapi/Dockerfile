@@ -1,18 +1,17 @@
-FROM node:10.16-stretch
+FROM node:10.16-stretch-slim
 
 ENV PORT=1337
 ARG ENV_WORKDIR
-
-RUN echo $ENV_WORKDIR
-
 WORKDIR $ENV_WORKDIR
-
-COPY . .
 
 RUN echo "unsafe-perm = true" >> ~/.npmrc
 
-RUN rm -rf ./node_modules
+COPY ./package.json .
+COPY ./package-lock.json .
+
 RUN npm install
+
+COPY . .
 
 EXPOSE $PORT
 

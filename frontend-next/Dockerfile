@@ -1,14 +1,14 @@
-FROM node:10.16-stretch
+FROM node:10.16-stretch-slim
 
 ENV PORT=3000
 ARG ENV_WORKDIR
 
-RUN echo $ENV_WORKDIR
-
 WORKDIR $ENV_WORKDIR
 
-COPY . .
+COPY ./package.json .
+COPY ./package-lock.json .
+RUN npm install
 
-RUN rm -rf ./node_modules/ && npm install
+COPY . .
 
 EXPOSE $PORT

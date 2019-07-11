@@ -5,7 +5,7 @@ services:
     container_name: mysql-dev
     image: mysql:5.7.26
     ports:
-      - "8001:3306"
+      - 3306:3306
     environment:
       - "MYSQL_USER=root"
       - "MYSQL_ROOT_PASSWORD=sedes;"
@@ -25,9 +25,9 @@ services:
         - "ENV_WORKDIR=/usr/src/backend-strapi"
     depends_on:
       - "mysql"
-    command: ["./wait-for-it.sh", "mysql:8001", "--", "npm", "run", "dev"]
+    command: ["./wait-for-it.sh", "mysql:3306", "--", "npm", "run", "dev"]
     environment:
-      - "DATABASE_PORT=8001"
+      - "DATABASE_PORT=3306"
       - "DATABASE_PASSWORD=sedes;"
       - "DATABASE_HOST=mysql"
       - "DATABASE_NAME=strapi-backend-dev"
@@ -57,6 +57,21 @@ services:
     networks:
       - app_network
     restart: always
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: "png-phpmyadmin"
+    links:
+      - mysql
+    environment:
+      PMA_HOST: mysql-dev
+      PMA_PORT: 3306
+    ports:
+      - "8081:80"
+    volumes:
+      - /sessions
+    networks:
+      - app_network
 
 networks:
   app_network:

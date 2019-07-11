@@ -15,8 +15,8 @@ services:
     restart: always
     volumes:
       # see https://github.com/strapi/strapi/issues/1957 and ./mysql-init/delete...shema.sql for explanation
-      - ./database/mysql-init:/docker-entrypoint-initdb.d
-      - ./database/mysql-config.cnf:/etc/mysql/conf.d/custom.cnf
+      - ./database-prod/mysql-init:/docker-entrypoint-initdb.d
+      - ./database-prod/mysql-config.cnf:/etc/mysql/conf.d/custom.cnf
   backend:
     container_name: backend-prod
     build:
