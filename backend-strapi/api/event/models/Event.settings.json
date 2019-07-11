@@ -35,6 +35,9 @@
     },
     "members-count": {
       "type": "integer"
+    },
+    "event-author": {
+      "type": "string"
     }
   }
 }

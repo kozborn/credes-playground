@@ -29,6 +29,9 @@
     },
     "page-position-identifier": {
       "type": "string"
+    },
+    "article-author": {
+      "type": "string"
     }
   }
 }

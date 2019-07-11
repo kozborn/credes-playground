@@ -15,8 +15,10 @@ services:
     restart: always
     volumes:
       # see https://github.com/strapi/strapi/issues/1957 and ./mysql-init/delete...shema.sql for explanation
-      - ./database-prod/mysql-init:/docker-entrypoint-initdb.d
-      - ./database-prod/mysql-config.cnf:/etc/mysql/conf.d/custom.cnf
+      # ok this is weird but now it works correctly without this entry, but I'll leave it here just in case
+      # - ./database-prod/mysql-init:/docker-entrypoint-initdb.d
+      - ./database-prod-data/mysql-docker-data:/var/lib/mysql
+      - ./database/mysql-config.cnf:/etc/mysql/conf.d/custom.cnf
   backend:
     container_name: backend-prod
     build:
@@ -27,7 +29,7 @@ services:
     depends_on:
       - "mysql"
     command:
-      ["./wait-for-it.sh", "mysql-prod:8002", "--", "npm", "run", "start:prod"]
+      ["./wait-for-it.sh", "mysql:8002", "--", "npm", "run", "start:prod"]
     environment:
       - "DATABASE_PORT=3306"
       - "DATABASE_USERNAME=root"
