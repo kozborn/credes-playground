@@ -11,11 +11,22 @@ const Section = ({ title, content, children }) => {
       <div className="container px-10 max-w-6xl mx-auto">
         <Markdown content={content || ""} />
       </div>
-      <div className="container px-10 max-w-6xl mx-auto">{children}</div>
+      {children && (
+        <div className="container px-10 max-w-6xl mx-auto">{children}</div>
+      )}
     </div>
   );
 };
 
-Section.propTypes = {};
+Section.propTypes = {
+  title: PropTypes.string.isRequired,
+  children: PropTypes.node,
+  content: PropTypes.string
+};
+
+Section.defaultProps = {
+  children: null,
+  content: ""
+};
 
 export default Section;
