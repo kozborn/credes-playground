@@ -59,20 +59,21 @@ services:
       - app_network
     restart: always
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: "png-phpmyadmin"
-    links:
-      - mysql
-    environment:
-      PMA_HOST: mysql-dev
-      PMA_PORT: 3306
-    ports:
-      - "8081:80"
-    volumes:
-      - /sessions
-    networks:
-      - app_network
+  # In case one need to investigate database
+  # phpmyadmin:
+  #   image: phpmyadmin/phpmyadmin
+  #   container_name: "png-phpmyadmin"
+  #   links:
+  #     - mysql
+  #   environment:
+  #     PMA_HOST: mysql-dev
+  #     PMA_PORT: 3306
+  #   ports:
+  #     - "8081:80"
+  #   volumes:
+  #     - /sessions
+  #   networks:
+  #     - app_network
 
 networks:
   app_network:

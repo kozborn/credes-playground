@@ -5,7 +5,7 @@ services:
     container_name: mysql-prod
     image: mysql:5.7.26
     ports:
-      - "3306:3306"
+      - "3307:3306"
     environment:
       - "MYSQL_USER=${DB_USER}"
       - "MYSQL_ROOT_PASSWORD=${DB_PASSWORD}"
@@ -54,7 +54,7 @@ services:
       args:
         - "ENV_WORKDIR=/usr/src/frontend-next"
     ports:
-      - "3000:3000"
+      - "3001:3000"
     volumes:
       - ./frontend-next:/usr/src/frontend-next
       - /usr/src/frontend-next/node_modules
