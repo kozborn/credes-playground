@@ -1,10 +1,11 @@
 import "../styles/index.css";
+import dynamic from "next/dynamic";
 import axios from "axios";
 import Layout from "../layouts/Layout";
-import Logos from "../components/Logos";
 import Section from "../components/Section";
 import _ from "underscore";
 import { getUrl } from "../lib/utils";
+const Logos = dynamic(import("../components/Logos"));
 
 const HomePage = ({ articlesAbout, logos, pageContent }) => {
   const headSection = !_.isEmpty(pageContent)

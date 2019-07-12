@@ -1,6 +1,7 @@
 import axios from "axios";
 import Layout from "../layouts/Layout";
-import Markdown from "../components/Markdown";
+import dynamic from "next/dynamic";
+const Markdown = dynamic(import("../components/Markdown"));
 import { getUrl } from "../lib/utils";
 import "../styles/index.css";
 

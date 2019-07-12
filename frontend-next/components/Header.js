@@ -58,6 +58,7 @@ const Header = () => {
       </div>
       <div className={menuClassNames}>
         <div className="text-sm lg:flex-grow">
+          <HeaderLink href="/">Home</HeaderLink>
           <HeaderLink href="program">Program</HeaderLink>
           <HeaderLink href="events">Events</HeaderLink>
           <HeaderLink href="bulletin-board">Bulletin Board</HeaderLink>

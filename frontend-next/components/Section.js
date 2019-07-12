@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Markdown from "./Markdown";
+import dynamic from "next/dynamic";
+const Markdown = dynamic(import("./Markdown"));
 
 const Section = ({ title, content, children }) => {
   return (
