@@ -110,6 +110,7 @@ public/uploads/*
 **/exports
 **/.cache
 **/build
+**/uploads
 
 ############################
 # Next
@@ -118,6 +119,12 @@ public/uploads/*
 **/out 
 
 ############################
-# mysql data
+# Mysql data
 ############################
 **/mysql-docker-data
+
+############################
+# config
+############################
+
+.env

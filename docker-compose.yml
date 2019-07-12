@@ -7,9 +7,9 @@ services:
     ports:
       - 3306:3306
     environment:
-      - "MYSQL_USER=root"
-      - "MYSQL_ROOT_PASSWORD=sedes;"
-      - "MYSQL_DATABASE=strapi-backend-dev"
+      - "MYSQL_USER=${DB_USER}"
+      - "MYSQL_ROOT_PASSWORD=${DB_PASSWORD}"
+      - "MYSQL_DATABASE=${DB_NAME}"
     volumes:
       - ./database/mysql-docker-data:/var/lib/mysql
       - ./database/mysql-config.cnf:/etc/mysql/conf.d/custom.cnf
@@ -28,9 +28,10 @@ services:
     command: ["./wait-for-it.sh", "mysql:3306", "--", "npm", "run", "dev"]
     environment:
       - "DATABASE_PORT=3306"
-      - "DATABASE_PASSWORD=sedes;"
-      - "DATABASE_HOST=mysql"
-      - "DATABASE_NAME=strapi-backend-dev"
+      - "DATABASE_PASSWORD=${DB_PASSWORD}"
+      - "DATABASE_HOST=${DB_HOST}"
+      - "DATABASE_USERNAME=${DB_USER}"
+      - "DATABASE_NAME=${DB_NAME}"
     volumes:
       - ./backend-strapi:/usr/src/backend-strapi
       - /usr/src/backend-strapi/node_modules
