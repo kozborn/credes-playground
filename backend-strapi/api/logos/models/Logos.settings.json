@@ -24,6 +24,10 @@
     },
     "order-number": {
       "type": "integer"
+    },
+    "logo-link": {
+      "required": true,
+      "type": "string"
     }
   }
 }

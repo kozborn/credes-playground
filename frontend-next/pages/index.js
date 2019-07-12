@@ -19,7 +19,9 @@ const HomePage = ({ articlesAbout, logos, pageContent }) => {
 
   return (
     <Layout>
-      <Logos logos={logos} />
+      <div>
+        <Logos logos={logos} />
+      </div>
       <Section title={headSection.title} content={headSection.content} />
       <Section title={programSection.title} content={programSection.content} />
       <div>
