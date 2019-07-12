@@ -2,7 +2,7 @@ version: "3"
 
 services:
   mysql:
-    container_name: mysql-prod
+    container_name: CREDS-mysql-prod
     image: mysql:5.7.26
     ports:
       - "3307:3306"
@@ -11,7 +11,7 @@ services:
       - "MYSQL_ROOT_PASSWORD=${DB_PASSWORD}"
       - "MYSQL_DATABASE=${DB_NAME}"
     networks:
-      - app_network_prod
+      - CREDS_network_prod
     restart: always
     volumes:
       # see https://github.com/strapi/strapi/issues/1957 and ./mysql-init/delete...shema.sql for explanation
@@ -20,7 +20,7 @@ services:
       - ./database-prod-data/mysql-docker-data:/var/lib/mysql
       - ./database/mysql-config.cnf:/etc/mysql/conf.d/custom.cnf
   backend:
-    container_name: backend-prod
+    container_name: CREDS-backend-prod
     build:
       context: ./backend-strapi
       dockerfile: Dockerfile
@@ -43,11 +43,11 @@ services:
     ports:
       - "1337:1337"
     networks:
-      - app_network_prod
+      - CREDS_network_prod
     restart: always
 
   frontend:
-    container_name: frontend-prod
+    container_name: CREDS-frontend-prod
     build:
       context: ./frontend-next
       dockerfile: Dockerfile
@@ -60,8 +60,8 @@ services:
       - /usr/src/frontend-next/node_modules
     command: ["npm", "run", "start:prod"]
     networks:
-      - app_network_prod
+      - CREDS_network_prod
     restart: always
 
 networks:
-  app_network_prod:
+  CREDS_network_prod:

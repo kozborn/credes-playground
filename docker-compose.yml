@@ -2,7 +2,7 @@ version: "3"
 
 services:
   mysql:
-    container_name: mysql-dev
+    container_name: CREDS-mysql-dev
     image: mysql:5.7.26
     ports:
       - 3306:3306
@@ -14,10 +14,10 @@ services:
       - ./database/mysql-docker-data:/var/lib/mysql
       - ./database/mysql-config.cnf:/etc/mysql/conf.d/custom.cnf
     networks:
-      - app_network
+      - CREDS_app_network
     restart: always
   backend:
-    container_name: backend-dev
+    container_name: CREDS-backend-dev
     build:
       context: ./backend-strapi
       dockerfile: Dockerfile
@@ -39,11 +39,11 @@ services:
     ports:
       - "1337:1337"
     networks:
-      - app_network
+      - CREDS_app_network
     restart: always
 
   frontend:
-    container_name: frontend-dev
+    container_name: CREDS-frontend-dev
     build:
       context: ./frontend-next
       dockerfile: Dockerfile
@@ -56,7 +56,7 @@ services:
       - /usr/src/frontend-next/node_modules
     command: ["npm", "run", "dev"]
     networks:
-      - app_network
+      - CREDS_app_network
     restart: always
 
   # In case one need to investigate database
@@ -73,7 +73,7 @@ services:
   #   volumes:
   #     - /sessions
   #   networks:
-  #     - app_network
+  #     - CREDS_app_network
 
 networks:
-  app_network:
+  CREDS_app_network:
