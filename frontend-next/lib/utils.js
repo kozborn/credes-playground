@@ -1,8 +1,6 @@
-export const getUrl = req => {
-  const host = req
-    ? "backend"
-    : process.browser
-    ? window.location.hostname
-    : "localhost";
-  return `http://${host}:1337`;
-};
+import _ from "underscore";
+
+export const getServerBackendUrl = () => `http://backend:1337`;
+
+export const getClientBackendUrl = () =>
+  `http://${window.location.hostname}:1337`;

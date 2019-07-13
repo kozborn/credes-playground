@@ -1,8 +1,7 @@
 import axios from "axios";
 import Layout from "../layouts/Layout";
-import dynamic from "next/dynamic";
-const Markdown = dynamic(import("../components/Markdown"));
-import { getUrl } from "../lib/utils";
+import Markdown from "../components/Markdown";
+import { getServerBackendUrl, getClientBackendUrl } from "../lib/utils";
 import "../styles/index.css";
 
 function About({ articles }) {
@@ -22,8 +21,9 @@ function About({ articles }) {
 }
 
 About.getInitialProps = async ({ req }) => {
+  const baseUrl = req ? getServerBackendUrl() : getClientBackendUrl();
   const response = await axios.get(
-    `${getUrl(req)}/articles?page-position-identifier=about`
+    `${baseUrl}/articles?page-position-identifier=about`
   );
   return { articles: response.data };
 };

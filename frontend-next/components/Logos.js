@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { getUrl } from "../lib/utils";
+import { getClientBackendUrl } from "../lib/utils";
 
 const Logos = ({ logos }) => (
   <div className="logos mx-auto lg:flex md:flex justify-center">
@@ -9,7 +9,7 @@ const Logos = ({ logos }) => (
         <a href={logo["logo-link"]} target="_blank">
           <img
             className={`${logo["logo-name"]} mx-auto md:mx-16 lg:mx-16`}
-            src={`${getUrl()}${logo["logo-img"].url}`}
+            src={`${getClientBackendUrl()}${logo["logo-img"].url}`}
           />
         </a>
       </div>

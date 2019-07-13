@@ -1,11 +1,13 @@
 import "../styles/index.css";
-import dynamic from "next/dynamic";
 import axios from "axios";
+import dynamic from "next/dynamic";
 import Layout from "../layouts/Layout";
 import Section from "../components/Section";
 import _ from "underscore";
-import { getUrl } from "../lib/utils";
-const Logos = dynamic(import("../components/Logos"));
+import { getServerBackendUrl, getClientBackendUrl } from "../lib/utils";
+const Logos = dynamic(() => import("../components/Logos"), {
+  ssr: false
+});
 
 const HomePage = ({ articlesAbout, logos, pageContent }) => {
   const headSection = !_.isEmpty(pageContent)
@@ -19,9 +21,8 @@ const HomePage = ({ articlesAbout, logos, pageContent }) => {
 
   return (
     <Layout>
-      <div>
-        <Logos logos={logos} />
-      </div>
+      <Logos logos={logos} />
+
       <Section title={headSection.title} content={headSection.content} />
       <Section title={programSection.title} content={programSection.content} />
       <div>
@@ -39,15 +40,15 @@ const HomePage = ({ articlesAbout, logos, pageContent }) => {
 };
 
 HomePage.getInitialProps = async ({ req }) => {
+  const baseUrl = req ? getServerBackendUrl() : getClientBackendUrl();
+
   const articles = await axios.get(
-    `${getUrl(req)}/articles?page-position-identifier=about`
+    `${baseUrl}/articles?page-position-identifier=about`
   );
 
-  const logos = await axios.get(`${getUrl(req)}/logos`);
+  const logos = await axios.get(`${baseUrl}/logos`);
 
-  const pageContent = await axios.get(
-    `${getUrl(req)}/pages?page-name=homepage`
-  );
+  const pageContent = await axios.get(`${baseUrl}/pages?page-name=homepage`);
 
   return {
     articlesAbout: articles.data,
