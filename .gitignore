@@ -132,4 +132,4 @@ public/uploads/*
 ############################
 # bridge
 ############################
-./bridge-express
+bridge-express/
